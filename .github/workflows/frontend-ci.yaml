@@ -45,10 +45,10 @@ jobs:
           key: ${{ runner.os }}-dependencies-${{ hashFiles('**/lockfiles') }}
           
       # Run the tests.
-      - run: cd cd starter/frontend && npm test
+      - run: cd starter/frontend && npm test
 
       # Run the linter.
-      - run: cd cd starter/frontend && npm run lint
+      - run: cd starter/frontend && npm run lint
 
       # Send a console message at completion.
       - run: |
