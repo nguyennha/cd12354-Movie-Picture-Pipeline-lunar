@@ -28,6 +28,8 @@ jobs:
 
       - name: Install project dependencies
         run: pipenv install --dev
+        # install flake8
+        run: pipenv install flake8 --dev
 
       - name: Lint code
         run: cd starter/backend && pipenv run lint   
@@ -41,7 +43,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10-alpine'   
+          python-version: '3.10'   
     
       - name: Install Pipenv
         run: pip install pipenv
@@ -65,7 +67,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10-alpine'   
+          python-version: '3.10'   
     
       - name: Install Pipenv
         run: pip install pipenv
