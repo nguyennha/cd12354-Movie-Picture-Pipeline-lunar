@@ -129,6 +129,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: starter/frontend
           push: true
           tags: project4/my-image:${{ github.sha }}
