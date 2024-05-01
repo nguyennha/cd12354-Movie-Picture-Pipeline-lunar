@@ -96,20 +96,20 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          path: starter/frontend/cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
+          path: cache
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('/**/lockfiles') }}
           restore-keys: |
             ${{ runner.os }}-frontend-dependencies-
       
       # Install dependencies
-      - run: cd starter/frontend && npm install
+      - run:  npm install
       
       # Cache dependencies
       - name: Cache dependencies
         uses: actions/cache@v4
         with:
-          path: starter/frontend/cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
+          path: cache
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('/**/lockfiles') }}
 
       # Build and push Docker image
       - name: Set up Docker Buildx
