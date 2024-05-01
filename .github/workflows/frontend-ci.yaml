@@ -99,11 +99,12 @@ jobs:
 # BUILD-JOB: 
   BUILD-JOB:
     runs-on: ubuntu-latest
-    needs: [LINT-JOB,TEST-JOB]
+    needs: LINT-JOB,TEST-JOB
     
     strategy:
       matrix:
         node-version: [20]
+    steps:
     # Reference a specific commit
       - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
       # Reference the major version of a release
