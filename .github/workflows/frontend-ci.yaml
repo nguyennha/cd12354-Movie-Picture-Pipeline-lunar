@@ -82,9 +82,7 @@ jobs:
 
   BUILD-JOB:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: starter/frontend
+
     needs: 
       - LINT-JOB
       - TEST-JOB
@@ -96,8 +94,8 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          path: cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('**/lockfiles') }}
+          path: starter/frontend/cache
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
           restore-keys: |
             ${{ runner.os }}-frontend-dependencies-
       
@@ -107,9 +105,9 @@ jobs:
       # Cache dependencies
       - name: Cache dependencies
         uses: actions/cache@v4
-        with:
-          path: cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('**/lockfiles') }}
+        with: 
+          path: starter/frontend/cache
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
 
       # Build and push Docker image
       - name: Set up Docker Buildx
