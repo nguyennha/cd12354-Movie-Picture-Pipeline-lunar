@@ -52,4 +52,97 @@ jobs:
 
       # Send a console message at completion.
       - run: |
-          echo "Hello ${{github.actor}}. You pushed to ${{github.repository}} at $(date)."
+          echo "Hello ${{github.actor}}, completed the LINT-JOB  ."
+          
+# TEST-JOB: 
+  TEST-JOB:   
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      # Reference a specific commit
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
+      # Reference the major version of a release
+      - uses: actions/checkout@v4 
+      # Reference a branch
+      - uses: actions/checkout@main
+
+        with:
+          node-version: ${{ matrix.node-version }}
+    
+    #Restore cache
+    
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: starter/frontend/cache
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('**/lockfiles') }}
+          restore-keys: |
+            ${{ runner.os }}-dependencies-
+          
+      # Install the dependencies.
+      - run: cd starter/frontend && npm install
+      #setup cache
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: starter/frontend/cache
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('**/lockfiles') }}
+          
+      # Run the tests.
+      - run: cd starter/frontend && npm test
+
+      # Run the linter.
+      - run: cd starter/frontend && npm run lint
+
+      # Send a console message at completion.
+      - run: |
+          echo "Hello ${{github.actor}}, completed the TEST-JOB  ."
+
+# BUILD-JOB: 
+  BUILD-JOB:
+    runs-on: ubuntu-latest
+    needs: TEST-JOB, BUILD-JOB
+    strategy:
+      matrix:
+        node-version: [20]
+    # Reference a specific commit
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
+      # Reference the major version of a release
+      - uses: actions/checkout@v4 
+      # Reference a branch
+      - uses: actions/checkout@main
+
+        with:
+          node-version: ${{ matrix.node-version }}
+    
+    #Restore cache
+    
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: starter/frontend/cache
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('**/lockfiles') }}
+          restore-keys: |
+            ${{ runner.os }}-dependencies-
+          
+      # Install the dependencies.
+      - run: cd starter/frontend && npm install
+      #setup cache
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: starter/frontend/cache
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('**/lockfiles') }}
+          
+      # Run the tests.
+      - run: cd starter/frontend && npm test
+
+      # Run the linter.
+      - run: cd starter/frontend && npm run lint
+
+      # Send a console message at completion.
+      - run: |
+          echo "Hello ${{github.actor}}, completed the BUILD-JOB  ."    
