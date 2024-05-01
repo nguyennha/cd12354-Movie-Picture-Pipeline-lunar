@@ -5,6 +5,9 @@ ENV REACT_APP_MOVIE_API_URL=${REACT_APP_MOVIE_API_URL}
 
 WORKDIR /app
 
+COPY starter/frontend  /app/starter/frontend
+
+
 # Copy dependdency files
 COPY package*.json ./
 
