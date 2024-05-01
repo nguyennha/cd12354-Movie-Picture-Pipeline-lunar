@@ -16,10 +16,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.10-alpine'   
+       - name: Install Python 3.10
+        run: apk add python3-dev py3-pip && pip3 install --upgrade pip
+  
     
       - name: Install Pipenv
         run: pip install pipenv
