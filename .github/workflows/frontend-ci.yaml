@@ -1,15 +1,18 @@
-name: ci-frontend-workflow 
+name: ci-frontend-workflow
 
 on:
   workflow_dispatch: 
     inputs:
-      my-input: # Add your desired input fields here if needed
+      my-input: 
         description: 'Optional description'
         required: false
         default: 'default-value'
   push:
-    branches: 
-      - main 
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   LINT-JOB:
@@ -113,20 +116,16 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
         
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-          aws-region: us-east-1
-
       - name: Login to container registry
-        run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ secrets.ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com  
-
+        uses: docker/login-action@v2
+        with:
+            username: ${{ secrets.REGISTRY_USERNAME }}
+            password: ${{ secrets.REGISTRY_PASSWORD }} 
+            
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           context: starter/frontend
           push: true
-          tags: ${{ github.repository_owner }}/my-image:${{ github.sha }}
+          tags: mydockerhubnguyennhalunar/my-frontend-app:latest
+
