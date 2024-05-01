@@ -129,4 +129,4 @@ jobs:
         with:
           context: starter/frontend
           push: true
-          tags: project4/my-image:${{ github.sha }}
+          tags: ${{ github.repository_owner }}/my-image:${{ github.sha }}
