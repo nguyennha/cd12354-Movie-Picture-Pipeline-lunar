@@ -28,7 +28,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: starter/frontend/cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-frontend-dependencies-
       
@@ -40,7 +40,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: starter/frontend/cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/package-lock.json') }}
 
       # Run linter
       - run: cd starter/frontend && npm run lint
@@ -62,7 +62,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: starter/frontend/cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-frontend-dependencies-
       
@@ -74,7 +74,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: starter/frontend/cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/package-lock.json') }}
 
       # Run tests
       - run: cd starter/frontend && npm test 
@@ -98,7 +98,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: starter/frontend/cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-frontend-dependencies-
       
@@ -110,7 +110,7 @@ jobs:
         uses: actions/cache@v4
         with: 
           path: starter/frontend/cache
-          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/**/lockfiles') }}
+          key: ${{ runner.os }}-frontend-dependencies-${{ hashFiles('starter/frontend/package-lock.json') }}
 
       # Build and push Docker image
       - name: Set up Docker Buildx
