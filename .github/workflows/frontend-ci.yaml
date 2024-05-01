@@ -127,5 +127,5 @@ jobs:
         with:
           context: starter/frontend
           push: true
-          tags: mydockerhubnguyennhalunar/my-frontend-app:latest
+          tags: nguyennhalunar/my-frontend-app:latest
 
