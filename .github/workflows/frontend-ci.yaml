@@ -99,7 +99,7 @@ jobs:
 # BUILD-JOB: 
   BUILD-JOB:
     runs-on: ubuntu-latest
-    needs: LINT-JOB,TEST-JOB
+    needs: LINT-JOB, TEST-JOB
     
     strategy:
       matrix:
