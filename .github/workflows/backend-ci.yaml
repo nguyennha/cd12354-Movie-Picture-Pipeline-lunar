@@ -31,6 +31,9 @@ jobs:
       
       - name: Install Flake8
         run: pipenv install flake8 --dev
+        
+      - name: Acitve Flake8  
+        run: pipenv shell flake8
 
       - name: Lint code
         run: cd starter/backend && pipenv run lint   
@@ -51,6 +54,9 @@ jobs:
 
       - name: Install project dependencies
         run: pipenv install --dev
+        
+      - name: Install test 
+        run: pip install pytest && pipenv shell pytest
 
       - name: Test code
         run: cd starter/backend && pipenv run test  
