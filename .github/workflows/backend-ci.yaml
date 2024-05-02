@@ -11,6 +11,9 @@ on:
 jobs:
   LINT-JOB:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: starter/backend
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -35,6 +38,9 @@ jobs:
           
   TEST-JOB:   
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: starter/backend
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -61,7 +67,10 @@ jobs:
     needs: 
       - LINT-JOB
       - TEST-JOB
-    
+    defaults:
+      run:
+        working-directory: starter/backend
+        
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
