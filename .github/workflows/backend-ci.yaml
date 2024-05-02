@@ -13,13 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
-      - name: Install Python 3.10
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3.10 python3.10-dev python3-pip
-          python3.10 -m pip install --upgrade pip
+      - name: Use Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
   
     
       - name: Install Pipenv
@@ -38,10 +37,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Use Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'   
     
@@ -65,10 +64,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Use Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'   
     
