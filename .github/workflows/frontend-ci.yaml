@@ -127,5 +127,5 @@ jobs:
         with:
           context: starter/frontend
           push: true
-          tags: nguyennhalunar/my-frontend-app:${GITHUB_SHA}
+          tags: nguyennhalunar/my-frontend-app:latest
 
