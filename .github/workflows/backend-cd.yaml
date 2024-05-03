@@ -95,5 +95,5 @@ jobs:
       - name: Set image tag and apply to cluster
         run: |
           cd starter/backend/k8s
-          kustomize edit set image backend=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/backend:${GITHUB_SHA} --validate=false 
-          kubectl apply -f -   --validate=false
+          kustomize edit set image backend=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/backend:${GITHUB_SHA}  
+        #  kubectl apply -f -  

@@ -95,4 +95,4 @@ jobs:
         run: |
           cd starter/frontend/k8s
           kustomize edit set image frontend=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/frontend:${GITHUB_SHA} 
-          kubectl apply -f - --validate=false
+        #  kubectl apply -f - --validate=false
