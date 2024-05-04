@@ -95,4 +95,6 @@ jobs:
         run: |
           cd starter/frontend/k8s
           kustomize edit set image frontend=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/frontend:${GITHUB_SHA}
-          kustomize build | kubectl apply -f -
+      - name: apply to cluster
+        run:  |  
+            kustomize build | kubectl apply -f -
